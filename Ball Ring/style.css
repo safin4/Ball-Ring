@@ -1,0 +1,42 @@
+:root
+{
+    --t: 6;
+    --l: 5;
+}
+body
+{
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-content: center;
+    color: #1f2020;
+    background-color: #F9F6EF;
+    background-image: radial-gradient(circle, #F9F6EF, #EBEBE3);
+}
+.ring
+{
+    width: 30vmin;
+    aspect-ratio: 1;
+    border-radius: 100vmax;
+    border: 0.5vmin double color-mix(in lab, currentcolor 40%, #0000);
+    position: relative;
+}
+.dot
+{
+    --del: 8s;
+    --clr: hsl(calc(var(--i) * 360deg / var(--t)) 75% calc(var(--l) * 6% + 15%));
+    position: absolute;
+    background-color: var(--clr);
+    border: 1px solid;
+    border-radius: 100vmax;
+    width: 4vmin;
+    aspect-ratio: 1;
+    offset-path: border-box;
+    animation: followpath var(--del) ease-out infinite calc((var(--del) / (-1 * var(--t))) * var(--i));
+}
+@keyframes followpath {
+    100%
+    {
+        offset-distance: 100%;
+    }
+}
